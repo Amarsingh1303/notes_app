@@ -87,7 +87,7 @@ class Notes extends Component {
         <hr />
 
         <div className="container-fluid row my-2">
-          {this.state.notesobj.length > 0 ? (
+          {this.state.notesobj ? (
             this.state.notesobj.map((ele, index) => (
               <Mid
                 key={index}
