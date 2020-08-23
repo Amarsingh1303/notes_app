@@ -11,12 +11,6 @@ class Mid extends Component {
     const { dataCallback } = this.props;
     dataCallback(id);
   };
-  componentWillUnmount() {
-    console.log("component-will-unmount");
-  }
-  componentDidMount() {
-    console.log("component did mount Mid");
-  }
   render() {
     const { title, desc, noteid, index } = this.props;
     return (
