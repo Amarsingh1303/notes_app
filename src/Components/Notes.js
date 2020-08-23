@@ -30,9 +30,13 @@ class Notes extends Component {
     };
     const list = [...this.state.notesobj, obj];
     this.setState({ notesobj: list, note: "", title: "" });
-    // () =>
-    //     localStorage.setItem("notes", JSON.stringify(this.state.notesobj)
-    // console.log(list);
+    setTimeout(() => {
+      localStorage.setItem("notes", JSON.stringify(this.state.notesobj));
+    }, 1000);
+    // if (this.state.isloading === false) {
+    //   localStorage.setItem("notes", JSON.stringify(this.state.notesobj));
+    //   console.log(list);
+    // }
   };
 
   handleDataCallback = (id) => {
@@ -42,13 +46,15 @@ class Notes extends Component {
     this.setState({
       notesobj: changeArr,
     });
-    // () => localStorage.setItem("notes", JSON.stringify(this.state.notesobj)
+    setTimeout(() => {
+      localStorage.setItem("notes", JSON.stringify(this.state.notesobj));
+    }, 1000);
   };
   componentDidMount() {
-    console.log("component did mount Notes");
-    // const arrobj = JSON.parse(localStorage.getItem("notes"));
-    // this.setState({ showobj: arrobj });
-    // console.log(arrobj);
+    // console.log("component did mount Notes");
+    const arrobj = JSON.parse(localStorage.getItem("notes"));
+    this.setState({ notesobj: arrobj });
+    console.log(arrobj);
   }
   render() {
     return (
@@ -102,66 +108,3 @@ class Notes extends Component {
 }
 
 export default Notes;
-
-// import React, { Component } from "react";
-// import Mid from "./Mid";
-// class Notes extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       notesobj: {},
-//       notesarr: [],
-//     };
-//   }
-
-//   changeTitle = (event) => {
-//     this.setState({ notesobj: { title: event.target.value } });
-//   };
-
-//   changeDesc = (event) => {
-//     this.setState({ notesobj: { desc: event.target.value } });
-//   };
-
-//   handleSubmit = (e) => {
-//     this.setState({ notesarr: this.state.obj });
-//   };
-
-//   render() {
-//     console.log(this.state.notesarr);
-//     return (
-//       <div className="container">
-//         <h1>Notes</h1>
-//         <div class="form-group">
-//           <label for="title">Title</label>
-//           <input
-//             type="text"
-//             class="form-control"
-//             id="title"
-//             aria-describedby="helpId"
-//             placeholder="Enter the title"
-//             value={this.state.title}
-//             onChange={this.changeTitle}
-//           />
-//         </div>
-//         <div class="form-group">
-//           <label for="title">desc</label>
-//           <input
-//             type="text"
-//             class="form-control"
-//             id="title"
-//             aria-describedby="helpId"
-//             placeholder="Enter the title"
-//             value={this.state.desc}
-//             onChange={this.changeDesc}
-//           />
-//         </div>
-//         <button class="btn btn-primary" onClick={this.handleSubmit}>
-//           submit
-//         </button>
-//       </div>
-//     );
-//   }
-// }
-
-// export default Notes;
